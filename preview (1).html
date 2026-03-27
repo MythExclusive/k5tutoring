@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K-5 Weekend Tutoring</title>
+  <style>
+    /* --- General Styles --- */
+    body {
+      font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+      overflow-x: hidden;
+    }
+
+    header {
+      background: #ff6f61;
+      color: white;
+      padding: 50px 20px 40px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1 {
+      animation: bounce 1.5s infinite alternate;
+    }
+
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10px); }
+    }
+
+    /* Bouncing emojis */
+    .bouncing-emojis span {
+      display: inline-block;
+      animation: emojiBounce 2s infinite;
+      font-size: 2rem;
+      margin: 0 5px;
+    }
+
+    @keyframes emojiBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    /* Clouds */
+    .clouds .cloud {
+      position: absolute;
+      font-size: 3rem;
+      opacity: 0.6;
+      animation: floatCloud 20s linear infinite;
+    }
+
+    .cloud1 { top: 10px; left: -10%; animation-delay: 0s; }
+    .cloud2 { top: 30px; left: -20%; animation-delay: 5s; }
+    .cloud3 { top: 50px; left: -15%; animation-delay: 10s; }
+
+    @keyframes floatCloud {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(120vw); }
+    }
+
+    section {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    /* --- Cards --- */
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: scale(1.05) rotate(1deg);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      color: #ff6f61;
+    }
+
+    /* --- Lists --- */
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* --- Footer --- */
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #ffd166;
+    }
+
+    /* --- Buttons --- */
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      background: #06d6a0;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.2s, background 0.3s;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      background: #04b383;
+    }
+
+    /* --- Contact Form --- */
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 2px solid #ffd166;
+      font-size: 16px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #06d6a0;
+      box-shadow: 0 0 10px rgba(6,214,160,0.5);
+    }
+
+    .contact-form textarea { min-height: 80px; resize: vertical; }
+    .contact-form label { font-weight: bold; color: #ff6f61; }
+
+    /* --- Floating Stars --- */
+    .stars span {
+      position: absolute;
+      font-size: 1.5rem;
+      animation: twinkle 3s infinite;
+    }
+
+    .stars span:nth-child(1) { bottom: 20px; left: 20%; animation-delay: 0s; }
+    .stars span:nth-child(2) { bottom: 40px; left: 40%; animation-delay: 1s; }
+    .stars span:nth-child(3) { bottom: 60px; left: 60%; animation-delay: 2s; }
+    .stars span:nth-child(4) { bottom: 30px; left: 50%; animation-delay: 0.5s; }
+    .stars span:nth-child(5) { bottom: 50px; left: 30%; animation-delay: 1.5s; }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.3); }
+    }
+
+    /* --- Step-by-Step --- */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      background: #ffd166;
+      border-radius: 15px;
+      padding: 10px 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .step:hover {
+      transform: scale(1.05);
+      background: #ffe285;
+    }
+
+    .step-icon {
+      font-size: 2rem;
+      margin-right: 15px;
+      animation: bounce 1.5s infinite alternate;
+    }
+
+    .step p {
+      margin: 0;
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* --- Pricing Packages --- */
+    .pricing-cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    .price-card {
+      background: #ffd166;
+      color: #333;
+      border-radius: 15px;
+      padding: 20px;
+      width: 200px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    }
+
+    .price-card:hover {
+      transform: scale(1.05) rotate(-1deg);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      background: #ffd85d;
+    }
+
+    .price-card h3 { color: #ff6f61; margin-bottom: 10px; }
+    .price-card .price { font-size: 2rem; font-weight: bold; margin-bottom: 10px; animation: popIn 0.8s ease; }
+    .price-card p { font-size: 0.95rem; }
+
+    @keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="clouds">
+    <div class="cloud cloud1">☁️</div>
+    <div class="cloud cloud2">☁️</div>
+    <div class="cloud cloud3">☁️</div>
+  </div>
+  <h1>🌟 K-5 Weekend Tutoring 🌟</h1>
+  <div class="bouncing-emojis">
+    <span>🎉</span><span>✨</span><span>📚</span>
+  </div>
+  <p>Fun learning that helps kids grow and succeed! 🎈</p>
+</header>
+
+<section>
+  <div class="card">
+    <h2>👋 About Me</h2>
+    <p>Hi! I'm a friendly tutor offering weekend help for students in kindergarten through 5th grade. I make learning fun, simple, and stress-free! 😊</p>
+  </div>
+
+  <div class="card">
+    <h2>📚 What I Can Help With</h2>
+    <ul>
+      <li>➕ Math (basic math, fractions, word problems)</li>
+      <li>📖 Reading & Writing</li>
+      <li>📝 Homework Help</li>
+      <li>🧠 Study Skills</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>✨ My Style</h2>
+    <ul>
+      <li>👍 Easy to understand</li>
+      <li>💛 Patient and encouraging</li>
+      <li>🌈 Builds confidence</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>📝 How Booking Works</h2>
+    <div class="steps">
+      <div class="step"><span class="step-icon">💡</span><p><strong>Step 1:</strong> View Pricing Packages</p></div>
+      <div class="step"><span class="step-icon">✉️</span><p><strong>Step 2:</strong> Message me with preferred day/time</p></div>
+      <div class="step"><span class="step-icon">✅</span><p><strong>Step 3:</strong> I confirm your session availability</p></div>
+      <div class="step"><span class="step-icon">💰</span><p><strong>Step 4:</strong> Pay for your session once confirmed</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💰 Pricing Packages</h2>
+    <p>📌 Please message me first to confirm your child’s time. Pricing is per session.</p>
+    <div class="pricing-cards">
+      <div class="price-card">
+        <h3>1 Hour</h3>
+        <p class="price">$15</p>
+        <p>Fun, focused session tailored to your child’s needs! 🎯</p>
+      </div>
+      <div class="price-card">
+        <h3>2 Hours</h3>
+        <p class="price">$25</p>
+        <p>Double the fun and learning! 📝 Perfect for homework or extra practice.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📩 Contact</h2>
+    <p>Please fill out the form below to confirm your session time! 💬</p>
+    <p>⏰ Please note: I can only check messages on weekdays after 2:35 PM. I’ll reply as soon as possible! 📬</p>
+    <form action="https://formspree.io/f/mykbzjor" method="POST" class="contact-form">
+      <label>Name: <input type="text" name="name" placeholder="Your Name" required></label><br><br>
+      <label>Email: <input type="email" name="email" placeholder="Your Email" required></label><br><br>
+      <label>Message:<br>
+        <textarea name="message" placeholder="Preferred day/time, grade, and topics to cover" required></textarea>
+      </label><br><br>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 K-5 Tutoring 🎓</p>
+</footer>
+
+<div class="stars">
+  <span>⭐</span><span>✨</span><span>🌟</span><span>⭐</span><span>✨</span>
+</div>
+
+</body>
+</html>
